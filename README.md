@@ -14,6 +14,13 @@ Imagine a fleet of delivery vehicles. Each vehicle sends its GPS coordinates eve
 
 - The UI (TypeScript/React): TBD
 
+## Setup
+
+### docker-compose
+
+I'm using KRaft mode (Kafka Raft), which is the modern way to run Kafka without needing a separate Zookeeper container. I've also included Kafka UI so I can see the messages visually instead of squinting at a terminal.
+Both the containers are configured to be in the same network (kafka-net) when deployed in Docker.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
