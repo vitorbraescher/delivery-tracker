@@ -1,6 +1,8 @@
 # delivery-tracker
 Sample project for a real-time logistics tracker.
 
+<img width="703" height="473" alt="Screenshot 2026-02-16 at 19 28 53" src="https://github.com/user-attachments/assets/b131ee7e-2078-4ac8-9991-62f5b22dc126" />
+
 ## The Project Idea
 Imagine a fleet of delivery vehicles. Each vehicle sends its GPS coordinates every few seconds. The system processes these coordinates and show them on a map in real-time.
 
