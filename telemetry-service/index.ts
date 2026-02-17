@@ -1,4 +1,6 @@
 import { Kafka } from 'kafkajs';
+import { Server } from 'socket.io';
+import http from 'http';
 import dotenv from 'dotenv';
 
 // Configuration
@@ -8,6 +10,8 @@ const clientId = process.env.KAFKA_CLIENT_ID || 'telemetry-service';
 const groupId = process.env.KAFKA_GROUP_ID || 'logistics-group';
 const topic = process.env.KAFKA_TOPIC || 'driver-locations';
 const fromBeginning = (process.env.FROM_BEGINNING || 'false').toLowerCase() === 'true';
+const websocket_port = process.env.WEBSOCKET_PORT || 3001;
+const websocket_event = process.env.WEBSOCKET_EVENT || 'driver-update';
 
 // Model
 interface DriverLocation {
@@ -16,12 +20,15 @@ interface DriverLocation {
   longitude: number;
 };
 
+// Web Server for forward data to the UI
+const server = http.createServer();
+const io = new Server(server, { cors: { origin: "*" } });
+
 // Kafka connection
 const kafka = new Kafka({
   clientId: clientId,
   brokers: brokers
 });
-
 const consumer = kafka.consumer({ groupId: groupId });
 
 const run = async () => {
@@ -44,12 +51,18 @@ const run = async () => {
         console.log(`📍 Coords: ${data.latitude}, ${data.longitude}`);
         console.log('---');
         
-        // TODO: Send data to UI-Dashboard
+        // Push to all subscribers
+        io.emit(websocket_event, data);
       } catch (err) {
         console.error('❌ Failed to parse message:', err);
       }
     }
   });
 };
+
+// Start the WebSocket server on port 3001
+server.listen(websocket_port, () => {
+  console.log(`🚀 Socket.io server running on port ${websocket_port}`);
+});
 
 run().catch(console.error);
