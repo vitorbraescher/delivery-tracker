@@ -23,6 +23,11 @@ Imagine a fleet of delivery vehicles. Each vehicle sends its GPS coordinates eve
 I'm using KRaft mode (Kafka Raft), which is the modern way to run Kafka without needing a separate Zookeeper container. I've also included Kafka UI so I can see the messages visually instead of squinting at a terminal.
 Both the containers are configured to be in the same network (kafka-net) when deployed in Docker.
 
+1. Install Docker Desktop if you haven't already.
+2. Ensure the Docker engine is running.
+3. Launch Kafka by opening your terminal in project's root and running `docker-compose up -d`.
+4. Verify your browser to `http://localhost:8080`. You should see Kafka UI dashboard.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
