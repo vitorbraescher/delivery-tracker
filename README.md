@@ -1,7 +1,7 @@
 # delivery-tracker
 Sample project for a real-time logistics tracker.
 
-<img width="703" height="473" alt="Screenshot 2026-02-16 at 19 28 53" src="https://github.com/user-attachments/assets/b131ee7e-2078-4ac8-9991-62f5b22dc126" />
+<img width="831" height="456" alt="Screenshot 2026-02-25 at 15 19 56" src="https://github.com/user-attachments/assets/de4942b4-0a32-4b2a-bac0-1adce204d2de" />
 
 ## The Project Idea
 Imagine a fleet of delivery vehicles. Each vehicle sends its GPS coordinates every few seconds. The system processes these coordinates and show them on a map in real-time.
@@ -12,9 +12,9 @@ Imagine a fleet of delivery vehicles. Each vehicle sends its GPS coordinates eve
 
 - The Broker (Kafka): The central hub that receives location data and holds it for consumers.
 
-- The Consumer & Gateway (TypeScript/Node.js): TBD
+- The Consumer & Gateway (TypeScript/Node.js): A service that consumes the driver-locations topic and pushes that data to a frontend via WebSockets (Socket.io).
 
-- The UI (TypeScript/React): TBD
+- The UI (TypeScript/React): A simple dashboard that displays trucks' positions based on the incoming data.
 
 ## Setup
 
