@@ -21,7 +21,7 @@ public class DeliverySimulator {
 
     @Scheduled(fixedRate = 2000) // Every 2 sec
     public void simulateMovement() {
-        double lat = 30.0333 + (Math.random() - 0.5) / 100;
+        double lat = -30.0333 + (Math.random() - 0.5) / 100;
         double lon = -51.2000 + (Math.random() - 0.5) / 100;
 
         DriverLocation loc = new DriverLocation(driverId, lat, lon);
